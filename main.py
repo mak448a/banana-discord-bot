@@ -30,6 +30,7 @@ async def on_message(message):
 
   congratulate = ["wtfuckium", "fuck", "shit", "damn", "bitch", "fuckium",
                  "shitium", "dang"]
+  # It's kind of stupid, but we do it anyway. :)
   for congratulation in congratulate:
     if congratulation in message.content.lower():
       await message.channel.send(f"Congratulations, {message.author.mention}! Keep saying that! :)")
