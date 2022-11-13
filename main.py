@@ -1,13 +1,16 @@
 import os
-from keep_alive import keep_alive
+import discord
 from discord.ext import commands
+
+
+intents = discord.Intents.default()
+intents.message_content = True
 
 bot = commands.Bot(
 	command_prefix="!",  # Change to desired prefix
-	case_insensitive=True  # Commands aren't case-sensitive
+	case_insensitive=True,  # Commands aren't case-sensitive
+  intents=intents
 )
-
-bot.author_id = 892748589854511124  # Change to your discord id!!!
 
 @bot.event 
 async def on_ready():  # When the bot is ready
@@ -22,7 +25,7 @@ async def on_message(message):
     await message.channel.send(f"I moderated your message, {message.author.mention}. Don't post \"UR MoM\" memes. Seriously.")
     print(f"Moderated {message.author}")
 
-  moderate = ["moyai", "moai"]
+  moderate = ["moyai", "moai", "🗿"]
   for moderation in moderate:
     if moderation in message.content.lower():
         await message.channel.purge(limit=1)
@@ -37,6 +40,4 @@ async def on_message(message):
       return
 
 
-keep_alive()  # Starts a webserver to be pinged.
-token = os.environ.get("DISCORD_BOT_SECRET") 
-bot.run(token)  # Starts the bot
+bot.run("OTk1NTIzNzk5NzM2OTA5ODQ0.GIlQAv.dlEObbkndzBPv-G-pR0ZPtdI7AfK2HdUQ9rTjc")
